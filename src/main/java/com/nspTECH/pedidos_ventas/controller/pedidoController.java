@@ -1,8 +1,6 @@
 package com.nspTECH.pedidos_ventas.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,13 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nspTECH.pedidos_ventas.DTO.carritoComprasDTO;
-import com.nspTECH.pedidos_ventas.DTO.usuariosDTO;
-import com.nspTECH.pedidos_ventas.DTO.ventaCarritoDTO;
-import com.nspTECH.pedidos_ventas.DTO.ventaUsuarioDTO;
 import com.nspTECH.pedidos_ventas.model.pedido;
 import com.nspTECH.pedidos_ventas.services.pedidoService;
 
@@ -56,7 +49,7 @@ public class pedidoController {
     }
 
 
-
+/* 
 @GetMapping("/VentaCarrito/{ID_PEDIDO}")
 public ResponseEntity<?> carritoCompras(
         @PathVariable Long ID_PEDIDO) {
@@ -78,8 +71,9 @@ public ResponseEntity<?> carritoCompras(
                 .body("Error interno: " + e.getMessage());
     }
 }
+    */
 
-
+/* 
 @GetMapping("/VentaUsuario/{ID_PEDIDO}")
 public ResponseEntity<?> UsuariosVentas(
         @PathVariable Long ID_PEDIDO) {
@@ -98,7 +92,7 @@ public ResponseEntity<?> UsuariosVentas(
     }
 }
 
-
+*/
 
 
 
@@ -129,10 +123,12 @@ public ResponseEntity<?> UsuariosVentas(
     public ResponseEntity<?> ActualizarPedido(@PathVariable Long ID_PEDIDO, @RequestBody pedido pedidoActualizar){
         try {
             pedido pedidoActualizado = pedidoservice.BuscarUnPedido(ID_PEDIDO);
-            pedidoActualizado.setANOTACIONES(pedidoActualizar.getANOTACIONES());
-            pedidoActualizado.setVALOR_TOTAL(pedidoActualizar.getVALOR_TOTAL());
-            pedidoActualizado.setIVA(pedidoActualizar.getIVA());
-            pedidoActualizado.setID_PEDIDO(pedidoActualizar.getID_PEDIDO());
+            pedidoActualizado.setFecha_pedido(pedidoActualizar.getFecha_pedido());
+            pedidoActualizado.setEstado(pedidoActualizar.getEstado());
+            pedidoActualizado.setId_sucursal(pedidoActualizar.getId_sucursal());
+            pedidoActualizado.setSubtotal(pedidoActualizar.getSubtotal());
+            pedidoActualizado.setMetodo_pago(pedidoActualizar.getMetodo_pago());
+            pedidoActualizado.setDireccion_envio(pedidoActualizar.getDireccion_envio());
             pedidoservice.GuardarPedido(pedidoActualizado);
             return ResponseEntity.ok(pedidoActualizado);
         } catch (Exception e) {

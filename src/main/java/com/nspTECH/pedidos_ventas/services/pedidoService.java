@@ -8,7 +8,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import com.nspTECH.pedidos_ventas.DTO.carritoComprasDTO;
 import com.nspTECH.pedidos_ventas.DTO.usuariosDTO;
-import com.nspTECH.pedidos_ventas.DTO.ventaUsuarioDTO;
 import com.nspTECH.pedidos_ventas.model.pedido;
 import com.nspTECH.pedidos_ventas.repository.pedidoRepository;
 

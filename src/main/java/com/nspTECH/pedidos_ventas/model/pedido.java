@@ -1,5 +1,7 @@
 package com.nspTECH.pedidos_ventas.model;
 
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -23,18 +25,23 @@ public class pedido {
     @Column(name= "ID_PEDIDO")
     private long ID_PEDIDO;
     
-    @Column(name = "ANOTACIONES",nullable= true , length = 200)
-    private String ANOTACIONES;
+    @Column(name = "fecha_pedido",nullable= false)
+    private Date fecha_pedido;
 
-    @Column(name = "IVA",nullable= false , precision = 2)
-    private Long IVA;
+    @Column(name = "subtotal",nullable= false , precision = 10)
+    private Long subtotal;
 
-    @Column(name = "VALOR_TOTAL",nullable= false , precision = 10, scale=2)
-    private Long VALOR_TOTAL;
+    @Column(name = "metodo_pago",nullable= false , length=20)
+    private Long metodo_pago;
 
-    @Column(name = "ID_USUARIO",nullable= false , precision = 10)
-    private Long ID_USUARIO;
+    @Column(name = "direccion_envio",nullable= true , length=100)
+    private String direccion_envio;
+    
+    @Column(name = "estado",nullable= false)
+    private Boolean estado;
+
+    @Column(name = "id_sucursal",nullable= false, length=10)
+    private int id_sucursal;
 
 
 }
-
