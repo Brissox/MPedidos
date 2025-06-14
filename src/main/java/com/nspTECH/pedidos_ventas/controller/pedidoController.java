@@ -127,6 +127,7 @@ public ResponseEntity<?> UsuariosVentas(
             pedidoActualizado.setEstado(pedidoActualizar.getEstado());
             pedidoActualizado.setId_sucursal(pedidoActualizar.getId_sucursal());
             pedidoActualizado.setSubtotal(pedidoActualizar.getSubtotal());
+            pedidoActualizado.setId_usuario(pedidoActualizar.getId_usuario());
             pedidoActualizado.setMetodo_pago(pedidoActualizar.getMetodo_pago());
             pedidoActualizado.setDireccion_envio(pedidoActualizar.getDireccion_envio());
             pedidoservice.GuardarPedido(pedidoActualizado);
