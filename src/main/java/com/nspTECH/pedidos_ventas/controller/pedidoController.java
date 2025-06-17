@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,56 +47,6 @@ public class pedidoController {
         }
     }
 
-
-/* 
-@GetMapping("/VentaCarrito/{ID_PEDIDO}")
-public ResponseEntity<?> carritoCompras(
-        @PathVariable Long ID_PEDIDO) {
-    try {
-        pedido pedidoBuscado = pedidoservice.BuscarUnPedido(ID_PEDIDO);
-        carritoComprasDTO carrito = pedidoservice.buscarCarritoCompras(ID_PEDIDO);
-        ventaCarritoDTO carritoDTO = new ventaCarritoDTO();
-        carritoDTO.setID_PEDIDO(pedidoBuscado.getID_PEDIDO());
-        carritoDTO.setANOTACIONES(pedidoBuscado.getANOTACIONES());
-        carritoDTO.setCANTIDAD(carrito.getCANTIDAD());
-        carritoDTO.setVALOR(carrito.getVALOR());
-        carritoDTO.setVALOR_TOTAL(pedidoBuscado.getVALOR_TOTAL());
-        carritoDTO.setIVA(pedidoBuscado.getIVA());
-        carritoDTO.setPRODUCTO_ID(carrito.getPRODUCTO_ID());
-
-        return ResponseEntity.ok(carritoDTO);
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Error interno: " + e.getMessage());
-    }
-}
-    */
-
-/* 
-@GetMapping("/VentaUsuario/{ID_PEDIDO}")
-public ResponseEntity<?> UsuariosVentas(
-        @PathVariable Long ID_PEDIDO) {
-    try {
-        pedido pedidoBuscado = pedidoservice.BuscarUnPedido(ID_PEDIDO);
-        usuariosDTO usuario = pedidoservice.buscarUsuario(ID_PEDIDO);
-        ventaUsuarioDTO usuarios = new  ventaUsuarioDTO();
-        usuarios.setANOTACIONES(pedidoBuscado.getANOTACIONES());
-        usuarios.setCORREO(usuario.getCORREO());
-        usuarios.setID_PEDIDO(pedidoBuscado.getID_PEDIDO());
-        usuarios.setIVA(pedidoBuscado.getIVA());
-        return ResponseEntity.ok(usuarios);
-    } catch (Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("Error interno: " + e.getMessage());
-    }
-}
-
-*/
-
-
-
-
-
     
     @PostMapping
     public ResponseEntity<?> GuardarPedido(@RequestBody pedido pedidoGuardar){
@@ -109,16 +58,6 @@ public ResponseEntity<?> UsuariosVentas(
     }
     }
 
-    @DeleteMapping("/{ID_PEDIDO}")
-        public ResponseEntity<String> EliminarPedido(@PathVariable Long ID_PEDIDO){
-            try {
-                pedido pedidoBuscado = pedidoservice.BuscarUnPedido(ID_PEDIDO);
-                pedidoservice.EliminarPedido(ID_PEDIDO);
-                return ResponseEntity.status(HttpStatus.OK).body("Se elimina pedido");
-            } catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido no esta registrado");
-            }
-        }
     @PutMapping("/{ID_PEDIDO}")
     public ResponseEntity<?> ActualizarPedido(@PathVariable Long ID_PEDIDO, @RequestBody pedido pedidoActualizar){
         try {
@@ -137,6 +76,17 @@ public ResponseEntity<?> UsuariosVentas(
         }
     }
     
-
+/*
+        @DeleteMapping("/{ID_PEDIDO}")
+        public ResponseEntity<String> EliminarPedido(@PathVariable Long ID_PEDIDO){
+            try {
+                pedido pedidoBuscado = pedidoservice.BuscarUnPedido(ID_PEDIDO);
+                pedidoservice.EliminarPedido(ID_PEDIDO);
+                return ResponseEntity.status(HttpStatus.OK).body("Se elimina pedido");
+            } catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pedido no esta registrado");
+            }
+        }
+ */
 
 }
