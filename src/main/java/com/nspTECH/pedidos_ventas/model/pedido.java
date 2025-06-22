@@ -26,9 +26,7 @@ public class pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "ID_PEDIDO")
     @Schema(description="aa")
-    private long ID_PEDIDO;
-
-
+    private long id_pedido;
     
     @Column(name = "fecha_pedido",nullable= false)
     @Schema(description="aa")

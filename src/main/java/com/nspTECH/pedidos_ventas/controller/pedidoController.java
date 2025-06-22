@@ -45,7 +45,7 @@ public class pedidoController {
 
     @Operation(summary = "PEDIDOS", description = "Operacion que lista todos los pedidos")
     @ApiResponses (value = {
-        @ApiResponse(responseCode = "200", description = "Se listaron correctamente los pedidos", content = @Content(mediaType = "application/json", schema = @Schema(implementation = pedido.class))), 
+        @ApiResponse(responseCode = "200", description = "Se listaron correctamente los pedidos", content = @Content(mediaType = "application/json", schema = @Schema(implementation = pedido.class))),
         @ApiResponse(responseCode = "404", description = "No se encontro ningun pedido", content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "No se encuentran Datos")))
 
 
@@ -69,7 +69,7 @@ public class pedidoController {
 
     })
     @ApiResponses (value = {
-        @ApiResponse(responseCode = "200", description = "Se lista correctamente el pedido ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = pedido.class))), 
+        @ApiResponse(responseCode = "200", description = "Se lista correctamente el pedido ", content = @Content(mediaType = "application/json", schema = @Schema(implementation = pedido.class))),
         @ApiResponse(responseCode = "404", description = "No se encontro ningun pedido", content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "No se encuentran Datos")))
     })
 
@@ -85,7 +85,7 @@ public class pedidoController {
 
     // ENDPOINT PARA REGISTRAR UN PEDIDO
     @PostMapping
-    @Operation(summary = "ENDPOINT QUE REGISTRA UN PEDIDO", description = "ENDPOINT QUE REGISTRA UN PEDIDO",requestBody= @io.swagger.v3.oas.annotations.parameters.RequestBody(description="PEDIDO QUE SE VA A REGISTRAR", required = true), Content = @Content(schema = @Schema(implementation = pedido.class)))
+    @Operation(summary = "ENDPOINT QUE REGISTRA UN PEDIDO", description = "ENDPOINT QUE REGISTRA UN PEDIDO",requestBody= @io.swagger.v3.oas.annotations.parameters.RequestBody(description="PEDIDO QUE SE VA A REGISTRAR", required = true, content = @Content(schema = @Schema(implementation = pedido.class))))
     @ApiResponses (value = {
         @ApiResponse(responseCode = "200", description = "Se registro correctamente el pedido", content = @Content(mediaType = "application/json", schema = @Schema(implementation = pedido.class))),
         @ApiResponse(responseCode = "500", description = "Indica que no se logro registrar el pedido", content = @Content(mediaType = "application/json", schema = @Schema(type = "string", example = "No se puede registrar el pedido")))
@@ -103,7 +103,7 @@ public class pedidoController {
 // ENDPOINT PARA EDITAR UN PEDIDO
     @PutMapping("/{ID_PEDIDO}")
 
-    @Operation(summary = "ENDPOINT QUE EDITA UN PEDIDO", description = "ENDPOINT QUE EDITA UN PEDIDO", requestBody=@io.swagger.v3.oas.annotations.parameters.RequestBody(description="PEDIDO QUE SE VA A REGISTRAR", required = true), Content = @Content(schema = @Schema(implementation = pedido.class)))
+    @Operation(summary = "ENDPOINT QUE EDITA UN PEDIDO", description = "ENDPOINT QUE EDITA UN PEDIDO", requestBody=@io.swagger.v3.oas.annotations.parameters.RequestBody(description="PEDIDO QUE SE VA A REGISTRAR", required = true, content = @Content(schema = @Schema(implementation = pedido.class))))
     @Parameters (value = {
         @Parameter (name="ID_PEDIDO", description= "ID del pedido que se editara", in = ParameterIn.PATH, required= true)})
 
