@@ -1,6 +1,7 @@
 package com.nspTECH.pedidos_ventas.model;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
@@ -25,36 +26,36 @@ public class pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name= "ID_PEDIDO")
-    @Schema(description="aa")
+    @Schema(description="identificador de pedido", example= "1")
     private long id_pedido;
     
     @Column(name = "fecha_pedido",nullable= false)
-    @Schema(description="aa")
-    private Date fecha_pedido;
+    @Schema(description="fecha en que se realiza el pedido", example= "")
+    private LocalDateTime fecha_pedido;
 
     @Column(name = "subtotal",nullable= false , precision = 10)
-    @Schema(description="aa")
+    @Schema(description="suma parcial de valores", example="10000")
     private Long subtotal;
 
     @Column(name = "metodo_pago",nullable= false , length=20)
-    @Schema(description="aa")
+    @Schema(description="metodo con el cual se realizara el pago", example="debito,credito,efetctivo")
     private String metodo_pago;
 
     @Column(name = "direccion_envio",nullable= true , length=100)
-    @Schema(description="aa")
+    @Schema(description="direccion donde se enviara el pedido",example="siempre viva 123")
     private String direccion_envio;
     
     @Column(name = "estado",nullable= false)
-    @Schema(description="aa")
+    @Schema(description="estado en que se encuentra el pedido", example="A=Activo / I=Inactivo")
     private String estado;
 
     @Column(name = "id_sucursal",nullable= false, length=10)
-    @Schema(description="aa")
-    private int id_sucursal;
+    @Schema(description="identificador de sucursal", example="1")
+    private Long id_sucursal;
 
     @Column(name = "id_usuario",nullable= false, length=10)
-    @Schema(description="aa")
-    private int id_usuario;
+    @Schema(description="identificador de usuario dueno del pedido", example="1")
+    private Long id_usuario;
 
 
 }
