@@ -1,26 +1,25 @@
 package com.nspTECH.pedidos_ventas.Service;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
-
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import org.mockito.MockitoAnnotations;
 
 import com.nspTECH.pedidos_ventas.model.pedido;
 import com.nspTECH.pedidos_ventas.repository.pedidoRepository;
 import com.nspTECH.pedidos_ventas.services.pedidoService;
-
-import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 
 public class pedidoServiceTest {
     
@@ -120,19 +119,41 @@ public class pedidoServiceTest {
 
     }
 
+    @Test
+    public void testEditarPedido(){
 
-/*
+        pedido pedidoO = new pedido();
+        pedidoO.setId_pedido(11L);
+        pedidoO.setSubtotal(2311L);
+        pedidoO.setMetodo_pago("Debito");
+
+        pedido pedidoE = new pedido();
+        pedidoE.setId_pedido(11L);
+        pedidoE.setSubtotal(23123111L);
+        pedidoE.setMetodo_pago("Credito");
+
+
+        when(pedidorepository.save(any(pedido.class))).thenReturn(pedidoE);
+        when(pedidorepository.existsById(11L)).thenReturn(true);
+        pedido resultado = pedidoservices.GuardarPedido(pedidoE);
+
+        assertNotNull(resultado);
+        assertEquals(11L, resultado.getId_pedido());
+        assertEquals(23123111L, resultado.getSubtotal());
+        assertEquals("Credito", resultado.getMetodo_pago());
+
+        verify(pedidorepository, times(1)).save(pedidoE);
+    }
 
     @Test
-    public void testEliminarEnvio(){
+    public void testEliminarPedido(){
         Long id = 11L;
-        doNothing().when(enviorepository).deleteById(id);
+        doNothing().when(pedidorepository).deleteById(id);
 
-        enviosservices.Eliminar***(id);
+        pedidoservices.EliminarPedido(11L);
 
-        verify(enviosrepository.times(1)).deleteById(id);
+        verify(pedidorepository, times(1)).deleteById(id);
 
     }
-*/
 }
 
